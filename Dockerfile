@@ -15,3 +15,9 @@ RUN fc-cache
 RUN fc-list
 RUN echo d9f7c6ccfbc74d9cad5664f13a037144 > /etc/machine-id
 RUN rm /var/cache/yum/* -rf
+
+RUN echo "#!/bin/bash" > /start.sh
+RUN echo "while (( 1 )) ;do     sleep 1000 ; done" >>/start.sh
+RUN chmod +x /start.sh
+
+ENTRYPOINT ["/start.sh"]
